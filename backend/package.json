@@ -1,0 +1,20 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon --ignore temp server.js"
+  },
+  "dependencies": {
+    "@google/genai": "^2.6.0",
+    "@google/generative-ai": "^0.24.1",
+    "cors": "^2.8.5",
+    "dotenv": "^17.4.2",
+    "express": "^5.1.0",
+    "fs-extra": "^11.3.0",
+    "simple-git": "^3.28.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
