@@ -16,7 +16,7 @@
     <div class="page-shell">
       <main class="app-card">
         <section class="intro-block">
-          <p class="eyebrow">Repository Intelligence Platform</p>
+          <p class="eyebrow">Codebase Intelligence Platform</p>
           <h1>Code Repository Analyzer</h1>
           <p class="hero-text">
             Enter a GitHub repository URL to generate a comprehensive technical
@@ -32,19 +32,7 @@
                 id="repoUrl"
                 name="repoUrl"
                 type="url"
-                placeholder="https://github.com/vercel/serve"
-                value="https://github.com/vercel/serve"
-                required
-              />
-            </label>
-
-            <label class="field">
-              <span>Backend API URL</span>
-              <input
-                id="apiUrl"
-                name="apiUrl"
-                type="url"
-                value="http://localhost:3001/api/analyze"
+                placeholder="Enter GitHub repository URL here"
                 required
               />
             </label>
@@ -58,21 +46,6 @@
               </button>
             </div>
           </form>
-
-          <div class="quick-facts">
-            <div class="stat">
-              <span class="stat-label">Backend</span>
-              <span class="stat-value">localhost:3001</span>
-            </div>
-            <div class="stat">
-              <span class="stat-label">Input</span>
-              <span class="stat-value">Public GitHub repo</span>
-            </div>
-            <div class="stat">
-              <span class="stat-label">Output</span>
-              <span class="stat-value">Structured analysis</span>
-            </div>
-          </div>
         </section>
 
         <section class="panel result-panel">
@@ -95,11 +68,7 @@
           <div id="resultMeta" class="result-meta hidden">
             <div>
               <span class="meta-label">Repository</span>
-              <span id="resultStatus" class="meta-value">Idle</span>
-            </div>
-            <div>
-              <span class="meta-label">Duration</span>
-              <span id="resultDuration" class="meta-value">0s</span>
+              <span id="resultStatus" class="meta-value"></span>
             </div>
           </div>
 
@@ -113,7 +82,7 @@
                 Technology stack and frameworks used
               </button>
               <button class="tab-button" data-tab="code-flow">
-                Code flow and architecture (with diagrams)
+                Code flow and architecture
               </button>
               <button class="tab-button" data-tab="project-structure">
                 Project structure and key files
@@ -145,282 +114,6 @@
               <div class="tab-pane" id="code-flow">
                 <div class="architecture-section">
                   <h3>Architecture Diagram</h3>
-                  <div class="diagram-container">
-                    <svg
-                      class="architecture-diagram"
-                      viewBox="0 0 1000 700"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <defs>
-                        <marker
-                          id="arrowhead"
-                          markerWidth="10"
-                          markerHeight="10"
-                          refX="9"
-                          refY="3"
-                          orient="auto"
-                        >
-                          <polygon points="0 0, 10 3, 0 6" fill="#5f67d8" />
-                        </marker>
-                      </defs>
-                      <!-- Title -->
-                      <text
-                        x="500"
-                        y="30"
-                        text-anchor="middle"
-                        class="diagram-title"
-                      >
-                        Multi-Page Application Architecture
-                      </text>
-
-                      <!-- HTML Pages Section -->
-                      <rect
-                        x="50"
-                        y="80"
-                        width="200"
-                        height="120"
-                        class="diagram-section-box"
-                      />
-                      <text
-                        x="150"
-                        y="105"
-                        text-anchor="middle"
-                        class="diagram-label"
-                      >
-                        HTML Pages
-                      </text>
-
-                      <rect
-                        x="70"
-                        y="120"
-                        width="50"
-                        height="35"
-                        class="diagram-file-box"
-                      />
-                      <text
-                        x="95"
-                        y="142"
-                        text-anchor="middle"
-                        class="diagram-file-text"
-                      >
-                        index.html
-                      </text>
-
-                      <rect
-                        x="130"
-                        y="120"
-                        width="50"
-                        height="35"
-                        class="diagram-file-box"
-                      />
-                      <text
-                        x="155"
-                        y="142"
-                        text-anchor="middle"
-                        class="diagram-file-text"
-                      >
-                        cart.html
-                      </text>
-
-                      <rect
-                        x="70"
-                        y="165"
-                        width="110"
-                        height="25"
-                        class="diagram-file-box"
-                      />
-                      <text
-                        x="125"
-                        y="182"
-                        text-anchor="middle"
-                        class="diagram-file-text"
-                      >
-                        contentDetails.html
-                      </text>
-
-                      <!-- JavaScript Files Section -->
-                      <rect
-                        x="370"
-                        y="80"
-                        width="260"
-                        height="120"
-                        class="diagram-section-box"
-                      />
-                      <text
-                        x="500"
-                        y="105"
-                        text-anchor="middle"
-                        class="diagram-label"
-                      >
-                        JavaScript Files
-                      </text>
-
-                      <rect
-                        x="390"
-                        y="120"
-                        width="50"
-                        height="35"
-                        class="diagram-file-box"
-                      />
-                      <text
-                        x="415"
-                        y="142"
-                        text-anchor="middle"
-                        class="diagram-file-text"
-                      >
-                        content.js
-                      </text>
-
-                      <rect
-                        x="450"
-                        y="120"
-                        width="50"
-                        height="35"
-                        class="diagram-file-box"
-                      />
-                      <text
-                        x="475"
-                        y="142"
-                        text-anchor="middle"
-                        class="diagram-file-text"
-                      >
-                        cart.js
-                      </text>
-
-                      <rect
-                        x="510"
-                        y="120"
-                        width="80"
-                        height="35"
-                        class="diagram-file-box"
-                      />
-                      <text
-                        x="550"
-                        y="142"
-                        text-anchor="middle"
-                        class="diagram-file-text"
-                      >
-                        contentDetails.js
-                      </text>
-
-                      <rect
-                        x="390"
-                        y="165"
-                        width="200"
-                        height="25"
-                        class="diagram-file-box"
-                      />
-                      <text
-                        x="490"
-                        y="182"
-                        text-anchor="middle"
-                        class="diagram-file-text"
-                      >
-                        XMLHttpRequest Handler
-                      </text>
-
-                      <!-- API/Backend Section -->
-                      <rect
-                        x="750"
-                        y="80"
-                        width="180"
-                        height="120"
-                        class="diagram-section-box"
-                      />
-                      <text
-                        x="840"
-                        y="105"
-                        text-anchor="middle"
-                        class="diagram-label"
-                      >
-                        Backend API
-                      </text>
-
-                      <rect
-                        x="770"
-                        y="120"
-                        width="140"
-                        height="35"
-                        class="diagram-file-box"
-                      />
-                      <text
-                        x="840"
-                        y="142"
-                        text-anchor="middle"
-                        class="diagram-file-text"
-                      >
-                        Backend Server
-                      </text>
-
-                      <rect
-                        x="770"
-                        y="165"
-                        width="140"
-                        height="25"
-                        class="diagram-file-box"
-                      />
-                      <text
-                        x="840"
-                        y="182"
-                        text-anchor="middle"
-                        class="diagram-file-text"
-                      >
-                        MockAPI Endpoints
-                      </text>
-
-                      <!-- Arrows from HTML to JS -->
-                      <path d="M 250 140 L 370 140" class="diagram-arrow" />
-
-                      <!-- Arrows from JS to Backend -->
-                      <path d="M 630 145 L 750 145" class="diagram-arrow" />
-
-                      <!-- Request/Response Flow -->
-                      <text x="150" y="270" class="diagram-section-label">
-                        Request Flow:
-                      </text>
-
-                      <rect
-                        x="50"
-                        y="300"
-                        width="900"
-                        height="360"
-                        class="diagram-flow-box"
-                        rx="10"
-                      />
-
-                      <text x="70" y="335" class="diagram-flow-title">
-                        1. Multi-Page Navigation
-                      </text>
-                      <text x="90" y="360" class="diagram-flow-text">
-                        Users navigate between different HTML files (.html)
-                        resulting in full page reloads
-                      </text>
-
-                      <text x="70" y="395" class="diagram-flow-title">
-                        2. XMLHttpRequest Calls
-                      </text>
-                      <text x="90" y="420" class="diagram-flow-text">
-                        JavaScript files make asynchronous requests to fetch
-                        dynamic content without page reload
-                      </text>
-
-                      <text x="70" y="455" class="diagram-flow-title">
-                        3. Backend Processing
-                      </text>
-                      <text x="90" y="480" class="diagram-flow-text">
-                        Backend API processes requests and returns JSON data for
-                        content generation
-                      </text>
-
-                      <text x="70" y="515" class="diagram-flow-title">
-                        4. DOM Injection
-                      </text>
-                      <text x="90" y="540" class="diagram-flow-text">
-                        JavaScript dynamically injects fetched data into the DOM
-                        for display
-                      </text>
-                    </svg>
-                  </div>
                 </div>
                 <article
                   id="codeFlowOutput"

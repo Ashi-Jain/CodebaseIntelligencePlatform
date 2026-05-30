@@ -34,7 +34,7 @@ body {
 }
 
 .page-shell {
-  width: min(1240px, calc(100% - 36px));
+  width: min(1350px, calc(100% - 36px));
   margin: 0 auto;
   padding: 40px 0 56px;
 }
@@ -276,12 +276,12 @@ button:disabled {
 
 .analysis-output {
   margin-top: 22px;
-  min-height: 420px;
+  min-height: auto;
   padding: 28px 26px;
   border: 1px solid var(--border);
   border-radius: 22px;
   background: #ffffff;
-  overflow: auto;
+  overflow: visible;
 }
 
 .analysis-output.empty {
@@ -349,6 +349,9 @@ button:disabled {
   font-family: "IBM Plex Mono", monospace;
   font-size: 0.92em;
   font-weight: 600;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
 }
 
 .analysis-output strong {
@@ -367,10 +370,16 @@ button:disabled {
   overflow-x: auto;
   padding-bottom: 0;
   margin-bottom: 0;
+  flex-wrap: nowrap;
+  scrollbar-width: none;
+}
+
+.tabs-header::-webkit-scrollbar {
+  display: none;
 }
 
 .tab-button {
-  padding: 14px 18px;
+  padding: 14px 22px;
   background: transparent;
   color: var(--muted);
   border: none;
@@ -378,10 +387,11 @@ button:disabled {
   border-radius: 0;
   cursor: pointer;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 1rem;
   transition: all 180ms ease;
   white-space: nowrap;
   box-shadow: none;
+  flex-shrink: 0;
 }
 
 .tab-button:hover {
@@ -444,7 +454,7 @@ button:disabled {
 .architecture-diagram {
   width: 100%;
   height: auto;
-  min-height: 700px;
+  min-height: 500px;
 }
 
 .diagram-title {
@@ -643,6 +653,8 @@ button:disabled {
   border: 1px solid var(--border);
   border-radius: 18px;
   background: var(--surface-alt);
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .layer-card h4,
@@ -701,6 +713,19 @@ button:disabled {
   cursor: pointer;
   color: var(--accent-strong);
   font-weight: 700;
+}
+
+.diagram-error {
+  padding: 20px;
+  background: #fef3f2;
+  border: 1px solid #f5c6ba;
+  border-radius: 12px;
+  color: #b54857;
+  text-align: center;
+}
+
+.diagram-error p {
+  margin: 0;
 }
 
 @media (max-width: 960px) {

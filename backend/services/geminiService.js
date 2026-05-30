@@ -90,12 +90,25 @@ Required JSON schema:
 }
 
 Strict output requirements:
-- "architecture.diagramMermaid" must be a valid Mermaid flowchart and include 6 to 12 nodes.
+- "architecture.diagramMermaid" must be VALID Mermaid flowchart syntax.
+- Use ONLY simple node labels.
+- Do NOT use parentheses (), brackets [], quotes "", apostrophes '', colons :, semicolons ;, or special symbols inside Mermaid node labels.
+- Keep Mermaid node labels short (1 to 4 words only).
+- Use alphanumeric text only in Mermaid node labels.
+- Mermaid diagram must contain 6 to 12 nodes maximum.
+- Use flowchart TD syntax only.
+- Do not include markdown code fences around Mermaid.
 - "keyFiles" must contain 8 to 15 files if enough evidence exists.
 - "runtimeFlow" must explain how a request, job, CLI action, or user interaction moves through the system.
 - "notableDirectories" must explain directory purpose, not just repeat the folder name.
 - If evidence is missing, say "Not evident from provided files" instead of guessing.
-- Keep values concise but meaningful. Avoid markdown headings, bullets, or code fences inside string values.
+- Keep values concise but meaningful.
+- Avoid markdown headings, bullets, or code fences inside string values.
+
+IMPORTANT:
+Return ONLY valid Mermaid syntax.
+Do not use parentheses, quotes, or special symbols inside Mermaid node labels.
+Keep Mermaid node labels short and simple.
 
 REPOSITORY SUMMARY:
 TOTAL FILES: ${repositorySummary.totalFiles}
@@ -138,7 +151,8 @@ const extractJson = (text) => {
 
 const buildFallbackAnalysis = (rawText, repositorySummary) => ({
   projectTitle: "Repository Analysis",
-  executiveSummary: "Structured parsing failed for the model response. Review the raw analysis text.",
+  executiveSummary:
+    "Structured parsing failed for the model response. Review the raw analysis text.",
   repositoryOverview: {
     purpose: "Not evident from provided files",
     businessDomain: "Not evident from provided files",
