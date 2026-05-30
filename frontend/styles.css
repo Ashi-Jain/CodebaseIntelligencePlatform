@@ -179,13 +179,6 @@ button:disabled {
   box-shadow: 0 8px 20px rgba(123, 114, 222, 0.08);
 }
 
-.quick-facts {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-  margin-top: 24px;
-}
-
 .stat,
 .result-meta {
   background: var(--surface-alt);
@@ -214,6 +207,14 @@ button:disabled {
   color: var(--text);
   font-size: 0.98rem;
   font-weight: 700;
+
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  line-height: 1.6;
+}
+
+.result-meta {
+  overflow: hidden;
 }
 
 .result-panel {
@@ -358,7 +359,8 @@ button:disabled {
   color: var(--text);
 }
 
-/* Tab Navigation Styles */
+/* Tabs */
+
 .tabs-container {
   margin-top: 24px;
 }
@@ -402,7 +404,6 @@ button:disabled {
 .tab-button.active {
   color: var(--accent-strong);
   border-bottom-color: var(--accent-strong);
-  background: transparent;
 }
 
 .tabs-content {
@@ -423,13 +424,15 @@ button:disabled {
     opacity: 0;
     transform: translateY(8px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* Architecture Diagram Styles */
+/* Architecture Diagram */
+
 .architecture-section {
   margin-bottom: 30px;
 }
@@ -446,180 +449,108 @@ button:disabled {
   width: 100%;
   background: var(--surface-alt);
   border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 20px;
-  overflow: auto;
+  border-radius: 20px;
+  padding: 18px;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
 .architecture-diagram {
   width: 100%;
   height: auto;
-  min-height: 500px;
+  display: block;
 }
+
+/* SVG Diagram Styling */
 
 .diagram-title {
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 700;
-  fill: var(--text);
+  fill: #5f67d8;
   font-family: "Space Grotesk", sans-serif;
 }
 
-.diagram-label {
-  font-size: 14px;
-  font-weight: 700;
-  fill: var(--text);
-  font-family: "Space Grotesk", sans-serif;
-}
-
-.diagram-section-box {
-  fill: var(--surface-soft);
-  stroke: var(--border-strong);
+.diagram-layer-box {
+  fill: #f4f5ff;
+  stroke: #7b72de;
   stroke-width: 2;
-  rx: 8;
 }
 
-.diagram-file-box {
-  fill: var(--accent-fade);
-  stroke: var(--accent-strong);
-  stroke-width: 1.5;
-  rx: 6;
-}
-
-.diagram-file-text {
-  font-size: 11px;
-  font-weight: 600;
-  fill: var(--accent-strong);
-  font-family: "IBM Plex Mono", monospace;
+.diagram-layer-title {
+  font-size: 13px;
+  font-weight: 700;
+  fill: #1c2340;
   text-anchor: middle;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.diagram-layer-files {
+  font-size: 8px;
+  fill: #6f7897;
+  text-anchor: middle;
+  font-family: "IBM Plex Mono", monospace;
 }
 
 .diagram-arrow {
-  stroke: var(--accent-strong);
-  stroke-width: 2;
+  stroke: #7b72de;
+  stroke-width: 2.5;
   fill: none;
   marker-end: url(#arrowhead);
 }
 
-.diagram-flow-box {
-  fill: none;
-  stroke: var(--border);
-  stroke-width: 1;
-}
-
-.diagram-flow-title {
-  font-size: 13px;
-  font-weight: 700;
-  fill: var(--accent-strong);
-  font-family: "Space Grotesk", sans-serif;
-}
-
-.diagram-flow-text {
-  font-size: 12px;
-  fill: var(--text);
-  font-family: "Space Grotesk", sans-serif;
-}
-
-.diagram-section-label {
-  font-size: 14px;
-  font-weight: 700;
-  fill: var(--text);
-  font-family: "Space Grotesk", sans-serif;
-}
-
-/* Project Structure File Items */
-.files-overview {
-  padding: 0;
-}
-
-.files-overview h3 {
-  margin: 0 0 12px;
-  color: #7b89e7;
-  font-size: 1.5rem;
-  line-height: 1.2;
-  letter-spacing: -0.03em;
-}
-
-.section-intro {
-  margin: 0 0 24px;
-  color: var(--muted);
-  font-size: 0.98rem;
-  line-height: 1.6;
-}
-
-.file-item {
-  padding: 20px;
-  margin-bottom: 14px;
-  background: var(--surface-alt);
+.diagram-card {
+  padding: 14px;
   border: 1px solid var(--border);
-  border-radius: 12px;
-  transition: all 180ms ease;
+  border-radius: 18px;
+  background: var(--surface-alt);
+  overflow-x: auto;
 }
 
-.file-item:hover {
-  border-color: var(--border-strong);
-  background: var(--surface);
-  box-shadow: 0 4px 12px rgba(123, 114, 222, 0.08);
-  transform: translateY(-2px);
-}
-
-.file-header {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 10px;
-}
-
-.file-name {
+.diagram-card svg {
+  width: 100%;
+  height: auto;
+  min-width: 700px;
   display: block;
-  color: var(--accent-strong);
-  font-size: 1rem;
-  font-weight: 700;
-  font-family: "IBM Plex Mono", monospace;
-  flex: 1;
 }
 
-.file-type-badge {
-  display: inline-block;
-  padding: 4px 10px;
-  background: var(--chip-bg);
-  color: #4a3e22;
-  font-size: 0.75rem;
+/* SVG Diagram Styling */
+
+.diagram-title {
+  font-size: 26px;
   font-weight: 700;
-  border-radius: 6px;
+  fill: #5f67d8;
   font-family: "Space Grotesk", sans-serif;
-  white-space: nowrap;
 }
 
-.file-description {
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.95rem;
-  line-height: 1.6;
+.diagram-layer-box {
+  fill: #f4f5ff;
+  stroke: #7b72de;
+  stroke-width: 2;
 }
 
-.file-description code {
-  display: inline-block;
-  padding: 0.08rem 0.45rem;
-  border-radius: 0.45rem;
-  background: var(--chip-bg);
-  color: #4a3e22;
+.diagram-layer-title {
+  font-size: 15px;
+  font-weight: 700;
+  fill: #1c2340;
+  text-anchor: middle;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.diagram-layer-files {
+  font-size: 9px;
+  fill: #6f7897;
+  text-anchor: middle;
   font-family: "IBM Plex Mono", monospace;
-  font-size: 0.92em;
-  font-weight: 600;
 }
 
-.analysis-output pre {
-  margin: 14px 0 0;
-  padding: 16px 18px;
-  border-radius: 16px;
-  background: var(--surface-alt);
-  border: 1px solid var(--border);
-  color: var(--text);
-  white-space: pre-wrap;
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.92rem;
-  line-height: 1.72;
+.diagram-arrow {
+  stroke: #7b72de;
+  stroke-width: 3;
+  fill: none;
+  marker-end: url(#arrowhead);
 }
+
+/* Cards */
 
 .two-column-grid,
 .card-grid {
@@ -631,11 +562,6 @@ button:disabled {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.card-grid,
-.stack-grid {
-  margin-top: 12px;
-}
-
 .card-grid {
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
@@ -643,6 +569,7 @@ button:disabled {
 .stack-grid {
   display: grid;
   gap: 14px;
+  margin-top: 12px;
 }
 
 .layer-card,
@@ -695,16 +622,6 @@ button:disabled {
   font-size: 0.92rem;
 }
 
-.diagram-card {
-  overflow: auto;
-}
-
-.diagram-host svg {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
 .raw-analysis {
   margin-top: 18px;
 }
@@ -728,6 +645,8 @@ button:disabled {
   margin: 0;
 }
 
+/* Mobile */
+
 @media (max-width: 960px) {
   .page-shell {
     width: min(100% - 24px, 1240px);
@@ -738,8 +657,6 @@ button:disabled {
     padding: 28px 22px 32px;
   }
 
-  .quick-facts,
-  .result-meta,
   .two-column-grid {
     grid-template-columns: 1fr;
   }
@@ -749,13 +666,13 @@ button:disabled {
     align-items: stretch;
   }
 
-  .tabs-header {
-    flex-wrap: wrap;
-  }
-
   .tab-button {
     padding: 12px 14px;
     font-size: 0.85rem;
+  }
+
+  .architecture-diagram {
+    min-width: 700px;
   }
 }
 
@@ -776,33 +693,29 @@ button:disabled {
     font-size: 1.45rem;
   }
 
-  .tabs-header {
-    gap: 4px;
-  }
-
   .tab-button {
     padding: 10px 12px;
     font-size: 0.75rem;
   }
 
   .diagram-container {
-    padding: 12px;
+    padding: 14px;
+  }
+
+  .architecture-diagram {
+    min-width: 600px;
   }
 
   .diagram-title {
-    font-size: 14px;
+    font-size: 20px;
   }
 
-  .diagram-label {
+  .diagram-layer-title {
     font-size: 12px;
   }
 
-  .diagram-flow-title {
-    font-size: 11px;
-  }
-
-  .diagram-flow-text {
-    font-size: 10px;
+  .diagram-layer-files {
+    font-size: 8px;
   }
 
   .file-header {
@@ -813,9 +726,5 @@ button:disabled {
 
   .file-item {
     padding: 16px;
-  }
-
-  .files-overview h3 {
-    font-size: 1.25rem;
   }
 }

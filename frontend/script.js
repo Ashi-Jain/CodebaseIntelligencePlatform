@@ -201,54 +201,63 @@ const renderStructuredAnalysis = async (analysis, repoUrl) => {
   // Build SVG Architecture Diagram
   const layers = analysis.architecture?.layers || [];
 
+  const svgHeight = Math.max(420, layers.length * 95 + 120);
+
   const layerBoxes = layers
     .slice(0, 6)
     .map((layer, index) => {
-      const y = 80 + index * 100;
+      const y = 90 + index * 95;
+
+      const fileText = (layer.filePaths || [])
+        .slice(0, 2)
+        .join(", ")
+        .slice(0, 55);
 
       return `
         <rect
-          x="120"
+          x="170"
           y="${y}"
-          width="500"
-          height="60"
-          rx="12"
+          width="460"
+          height="56"
+          rx="14"
           fill="#eef2ff"
           stroke="#7b72de"
           stroke-width="2"
         />
 
         <text
-          x="370"
-          y="${y + 25}"
+          x="400"
+          y="${y + 23}"
           text-anchor="middle"
-          font-size="18"
+          font-size="13"
           font-weight="700"
           fill="#1c2340"
+          font-family="Space Grotesk"
         >
           ${escapeHtml(layer.name || "Layer")}
         </text>
 
         <text
-          x="370"
-          y="${y + 45}"
+          x="400"
+          y="${y + 40}"
           text-anchor="middle"
-          font-size="12"
+          font-size="9"
           fill="#6f7897"
+          font-family="IBM Plex Mono"
         >
-          ${escapeHtml((layer.filePaths || []).slice(0, 2).join(", "))}
+          ${escapeHtml(fileText)}
         </text>
 
         ${
           index < layers.length - 1
             ? `
           <line
-            x1="370"
-            y1="${y + 60}"
-            x2="370"
-            y2="${y + 100}"
+            x1="400"
+            y1="${y + 56}"
+            x2="400"
+            y2="${y + 95}"
             stroke="#7b72de"
-            stroke-width="3"
+            stroke-width="2.5"
             marker-end="url(#arrowhead)"
           />
         `
@@ -260,11 +269,11 @@ const renderStructuredAnalysis = async (analysis, repoUrl) => {
 
   const architectureDiagram = `
     <svg
-      width="100%"
-      height="${Math.max(250, layers.length * 110)}"
-      viewBox="0 0 800 ${Math.max(250, layers.length * 110)}"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+  class="architecture-diagram"
+  viewBox="0 0 800 ${Math.max(250, layers.length * 110)}"
+  preserveAspectRatio="xMidYMid meet"
+  xmlns="http://www.w3.org/2000/svg"
+>
       <defs>
         <marker
           id="arrowhead"
@@ -283,11 +292,12 @@ const renderStructuredAnalysis = async (analysis, repoUrl) => {
 
       <text
         x="400"
-        y="40"
+        y="45"
         text-anchor="middle"
-        font-size="28"
+        font-size="24"
         font-weight="700"
         fill="#5f67d8"
+        font-family="Space Grotesk"
       >
         Repository Architecture
       </text>
